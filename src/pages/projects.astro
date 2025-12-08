@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import { projects } from "../data/projectsData.astro";
+---
+
+<Layout>
+    <Navbar />
+    <main class="pt-16 flex justify-center">
+        <div id="carousel" class="overflow-x-auto w-210 h-fit scroll-smooth flex gap-10">
+            {projects.map((project) => (
+                <section class="px-10 py-10 flex flex-col gap-12 justify-center">
+                <div class="max-w-160 flex flex-col gap-4 lg:text-lg">
+                    <h2 class="text-3xl font-semibold">{project.title}</h2>
+                    <p>{project.description}</p>
+                </div>
+
+                <a href={`/project/${project.title}`}>
+                    <picture class="image w-190 h-90 transition-transform bg-white duration-200 rounded-2xl flex items-center justify-center">
+                    <img
+                        src={project.images[1].ref}
+                        alt={project.title}
+                        class="w-190 rounded-2xl"
+                    />
+                    </picture>
+                </a>
+                </section>
+            ))}
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .image:hover {
+        transform: scale(105%);
+        box-shadow: 0px 2px 18px rgb(133, 132, 202);
+        cursor: pointer;
+    }
+</style>
+
+<script>
+  // Scroll horizontal usando la rueda del mouse
+  const el = document.getElementById("carousel");
+
+  el!.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    el!.scrollLeft += e.deltaY*8.8; // mueve horizontal con la ruedita
+  });
+</script>
