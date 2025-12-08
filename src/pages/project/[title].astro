@@ -1,0 +1,43 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/projectsData.astro";
+
+export async function getStaticPaths() {
+    return projects.map(project => ({
+        params: { title: project.title }, 
+        props: { project }
+    }));
+}
+
+const { project } = Astro.props;
+const isProject = project ? true : false
+---
+
+<Layout>
+    <Navbar isProject={isProject} project={project} />
+    <main class="py-24 flex flex-col items-center justify-center gap-12">
+        <h1 class="text-3xl h-fit font-medium border-b pb-1">{project.title}</h1>
+        <section class="py-10 pr-4 flex flex-col gap-20">
+            {project.images.map((image) => (
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-2xl font-normal">{image.title}</h3>
+                    <picture>
+                        <img src={image.ref} alt={image.title} class="h-110" />
+                    </picture>
+                </div>
+            ))}
+        </section>
+
+        <section class="h-[60vh] flex flex-col justify-center items-center gap-20">
+            <h2 class="text-3xl font-medium border-b pb-1">Herramientas Usadas</h2>
+            <div class="flex gap-20">
+                {project.tools.map((tool) => (
+                    <a class="h-16 w-16 cursor-pointer rounded-full duration-200 hover:scale-110" href={tool.link}>
+                        <tool.icon />
+                    </a>
+                ))}
+            </div>
+        </section>
+    </main>
+</Layout>
