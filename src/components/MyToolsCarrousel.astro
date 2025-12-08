@@ -1,0 +1,57 @@
+---
+import ReactIcon from "../icons/react.astro";
+import AstroIcon from "../icons/astro.astro";
+import NextIcon from "../icons/next.astro";
+import TailwindIcon from "../icons/tailwind.astro";
+import PrismaIcon from "../icons/prisma.astro";
+import NodeIcon from "../icons/node.astro";
+
+const myTools = [
+  {
+    name: "React",
+    link: "https://reactjs.org/",
+    icon: ReactIcon,
+  },
+  {
+    name: "Astro",
+    link: "https://astro.build/",
+    icon: AstroIcon,
+  },
+  {
+    name: "Tailwind",
+    link: "https://tailwindcss.com/",
+    icon: TailwindIcon,
+  },
+  {
+    name: "Next",
+    link: "https://nextjs.org/",
+    icon: NextIcon,
+  },
+  {
+    name: "Node",
+    link: "https://nodejs.org/es",
+    icon: NodeIcon,
+  },
+  {
+    name: "Prisma",
+    link: "https://www.prisma.io",
+    icon: PrismaIcon,
+  },
+];
+---
+
+<div class="flex justify-center gap-14">
+  {myTools.map((t) => {
+        return (
+            <a
+            href={t.link}
+            class="flex flex-col items-center gap-2 duration-200 cursor-pointer hover:scale-110"
+            >
+                <div class="w-14 h-14 flex items-center justify-center">
+                    <t.icon />
+                </div>
+                {t.name}
+            </a>
+        );
+    })}
+</div>
