@@ -1,0 +1,29 @@
+---
+import HomeIcon from "../icons/home-icon.astro";
+import GoBackIcon from "../icons/back-icon.astro";
+import GithubIcon from "../icons/github.astro"
+
+const { project, isProject } = Astro.props
+---
+
+<nav class="h-16 min-w-32 max-w-64 pl-6 rounded-br-full bg-[#292080] flex items-center gap-8">
+    {isProject
+        ?
+        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="/">
+            <HomeIcon />
+        </a>
+        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="/projects">
+            <GoBackIcon />
+        </a>
+        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href={project.github}>
+            <GithubIcon />
+        </a>
+        :
+        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="/">
+            <HomeIcon />
+        </a>
+        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="https://github.com/Matisalinas23">
+            <GithubIcon />
+        </a>
+    }
+</nav>
