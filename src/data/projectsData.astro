@@ -1,0 +1,209 @@
+---
+import ReactIcon from "../icons/react.astro";
+import AstroIcon from "../icons/astro.astro";
+import NextIcon from "../icons/next.astro";
+import TailwindIcon from "../icons/tailwind.astro";
+import PrismaIcon from "../icons/prisma.astro";
+import NodeIcon from "../icons/node.astro";
+import ReduxIcon from "../icons/redux.astro"
+import JavascriptIcon from "../icons/javascript.astro"
+
+export interface IImage {
+    title: string
+    description: string
+    ref: string
+}
+
+export interface ITool {
+    name: string
+    icon: Record<string, any>
+    link: string
+}
+
+export interface IProject {
+    title: string
+    description: string
+    github: string
+    images: IImage[]
+    tools: ITool[]
+}
+
+export const projects: IProject[] = [
+    {
+        title: "Heroes App",
+        description: "Biblioteca de heroes de Marvel y DC con funciones de login y filtrado. Fue la primer aplicacion que hice con React y donde aprendi las bases de este espectacular framework",
+        images: [
+            {
+                title: "Iniciar Sesión",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-1.png",
+            },
+            {
+                title: "Galeria",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-2.png",
+            },
+            {
+                title: "Vista del Heroe",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-3.png",
+            },
+            {
+                title: "Buscar Heroe",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-4.png",
+            },
+        ],
+        github: "https://github.com/Matii2233/heroesApp_typscript_react",
+        tools: [
+            {
+                name: "React",
+                icon: ReactIcon,
+                link: "https://react.dev",
+            },
+            {
+                name: "Javascript",
+                icon: JavascriptIcon,
+                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
+            },
+            {
+                name: "Redux",
+                icon: ReduxIcon,
+                link: "https://redux-toolkit.js.org/"
+            },
+        ]
+    },
+    {
+        title: "Project Two",
+        description: "Description for project two.",
+        images: [
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-1.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-2.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-3.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-4.png",
+            },
+        ],
+        github: "https://github.com/Matii2233/heroesApp_typscript_react",
+        tools: [
+            {
+                name: "React",
+                icon: ReactIcon,
+                link: "https://react.dev",
+            },
+            {
+                name: "Javascript",
+                icon: JavascriptIcon,
+                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
+            },
+            {
+                name: "Redux",
+                icon: ReduxIcon,
+                link: "https://redux-toolkit.js.org/"
+            },
+        ]
+    },
+    {
+        title: "Project Three",
+        description: "Description for project three.",
+        images: [
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-1.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-2.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-3.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-4.png",
+            },
+        ],
+        github: "https://github.com/Matii2233/heroesApp_typscript_react",
+        tools: [
+            {
+                name: "React",
+                icon: ReactIcon,
+                link: "https://react.dev",
+            },
+            {
+                name: "Javascript",
+                icon: JavascriptIcon,
+                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
+            },
+            {
+                name: "Redux",
+                icon: ReduxIcon,
+                link: "https://redux-toolkit.js.org/"
+            },
+        ]
+    },
+    {
+        title: "Project Three",
+        description: "Description for project three.",
+        images: [
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-1.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-2.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-3.png",
+            },
+            {
+                title: "Login",
+                description: "Descripcion de prueba",
+                ref: "/images/heroesapp-4.png",
+            },
+        ],
+        github: "https://github.com/Matii2233/heroesApp_typscript_react",
+        tools: [
+            {
+                name: "React",
+                icon: ReactIcon,
+                link: "https://react.dev",
+            },
+            {
+                name: "Javascript",
+                icon: JavascriptIcon,
+                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
+            },
+            {
+                name: "Redux",
+                icon: ReduxIcon,
+                link: "https://redux-toolkit.js.org/"
+            },
+        ]
+    },
+];
+---
