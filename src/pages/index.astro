@@ -1,11 +1,67 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import MyToolsCarrousel from "../components/MyToolsCarrousel.astro";
+import RightArrow from "../icons/next-arrow.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<main class="h-full flex items-center justify-center">
+		<section class="relative max-w-200 flex flex-col justify-center gap-16">
+			<h1 class="text-5xl font-semibold">Hola, soy Matias</h1>
+			<div class="flex items-center gap-8">
+				<picture>
+					<img
+						src="https://thumbs.dreamstime.com/b/vector-de-perfil-a%E2%80%A6usuario-medios-sociales-icono-183042379.jpg?w=768"
+						alt="Imagen Predeterminada"
+						class="w-40 h-40 md:w-50 md:h-50"
+					/>
+				</picture>
+				<div class="flex-1 flex flex-col gap-12 lg:text-lg">
+					<p class="max-h-40 pr-4 overflow-y-auto xl:max-h-50">
+						Hace no mucho, comencé mi aprendizaje en desarrollo web, y
+						poco después, me di cuenta cuánto me gustaba trabajar en aplicaciones.
+						<br /><br />
+						Mi perfil se enfoca en el frontend, pero tengo conocimientos
+						básicos de backend con <b class="font-medium">NodeJS</b> y <b class="font-medium">Prisma</b>.
+					</p>
+				</div>
+			</div>
+
+			<MyToolsCarrousel />
+
+			<div class="w-full flex justify-center">
+				<button class="button-next relative overflow-hidden border w-64 h-12 text-white rounded-2xl
+				cursor-pointer flex items-center"
+				>
+					<a class="flex-1 z-10 text-center" href='/projects'>
+						PROYECTOS
+					</a>
+
+					<div class="right-0 w-12 border-l p-3 text-white z-10">
+						<RightArrow />
+					</div>
+				</button>
+			</div>
+		</section>
+	</main>
 </Layout>
+
+<style>
+	.button-next::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		transform: translateX(-100%);
+		background: linear-gradient(
+			150deg,
+			rgb(48, 11, 136) 0%,
+			rgb(69, 20, 184) 60%
+		);
+		transition: transform .35s ease;
+		z-index: 0;
+	}
+
+	.button-next:hover::before {
+		transform: translateX(0);
+	}
+</style>
