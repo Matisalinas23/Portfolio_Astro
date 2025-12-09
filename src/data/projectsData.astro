@@ -8,6 +8,17 @@ import NodeIcon from "../icons/node.astro";
 import ReduxIcon from "../icons/redux.astro"
 import JavascriptIcon from "../icons/javascript.astro"
 
+const iconMap = {
+  React: ReactIcon,
+  Javascript: JavascriptIcon,
+  Redux: ReduxIcon,
+  Astro: AstroIcon,
+  Next: NextIcon,
+  Tailwind: TailwindIcon,
+  Prisma: PrismaIcon,
+  Node: NodeIcon
+};
+
 export interface IImage {
     title: string
     description: string
@@ -16,7 +27,6 @@ export interface IImage {
 
 export interface ITool {
     name: string
-    icon: Record<string, any>
     link: string
 }
 
@@ -58,17 +68,14 @@ export const projects: IProject[] = [
         tools: [
             {
                 name: "React",
-                icon: ReactIcon,
                 link: "https://react.dev",
             },
             {
                 name: "Javascript",
-                icon: JavascriptIcon,
                 link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
             },
             {
                 name: "Redux",
-                icon: ReduxIcon,
                 link: "https://redux-toolkit.js.org/"
             },
         ]
@@ -102,17 +109,14 @@ export const projects: IProject[] = [
         tools: [
             {
                 name: "React",
-                icon: ReactIcon,
                 link: "https://react.dev",
             },
             {
                 name: "Javascript",
-                icon: JavascriptIcon,
                 link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
             },
             {
                 name: "Redux",
-                icon: ReduxIcon,
                 link: "https://redux-toolkit.js.org/"
             },
         ]
@@ -146,17 +150,14 @@ export const projects: IProject[] = [
         tools: [
             {
                 name: "React",
-                icon: ReactIcon,
                 link: "https://react.dev",
             },
             {
                 name: "Javascript",
-                icon: JavascriptIcon,
                 link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
             },
             {
                 name: "Redux",
-                icon: ReduxIcon,
                 link: "https://redux-toolkit.js.org/"
             },
         ]
@@ -190,17 +191,14 @@ export const projects: IProject[] = [
         tools: [
             {
                 name: "React",
-                icon: ReactIcon,
                 link: "https://react.dev",
             },
             {
                 name: "Javascript",
-                icon: JavascriptIcon,
                 link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
             },
             {
                 name: "Redux",
-                icon: ReduxIcon,
                 link: "https://redux-toolkit.js.org/"
             },
         ]
