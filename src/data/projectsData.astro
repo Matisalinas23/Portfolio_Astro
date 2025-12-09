@@ -1,4 +1,6 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 import ReactIcon from "../icons/react.astro";
 import AstroIcon from "../icons/astro.astro";
 import NextIcon from "../icons/next.astro";
@@ -8,7 +10,7 @@ import NodeIcon from "../icons/node.astro";
 import ReduxIcon from "../icons/redux.astro"
 import JavascriptIcon from "../icons/javascript.astro"
 
-const iconMap = {
+export const iconMap: Record<string, AstroComponentFactory> = {
   React: ReactIcon,
   Javascript: JavascriptIcon,
   Redux: ReduxIcon,
