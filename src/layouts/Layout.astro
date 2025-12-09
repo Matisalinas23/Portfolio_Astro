@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -11,6 +12,7 @@ import '../styles/global.css';
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content="Pagina web de Matias Salinas para mostrar algunos de sus proyectos y fuertes en el desarrollo web.">
 		<title>Portfolio</title>
+		<ClientRouter />
 	</head>
 	<body>
 		<main class="h-full overflow-y-auto bg-[linear-gradient(rgb(6,0,70)_0%,rgb(22,13,99)_60%,rgb(33,27,121)_100%)]">
