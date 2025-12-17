@@ -2,10 +2,28 @@
 import Layout from "../layouts/Layout.astro";
 import MyToolsCarrousel from "../components/MyToolsCarrousel.astro";
 import RightArrow from "../icons/next-arrow.astro";
+import GmailIcon from "../icons/gmail.astro";
+import WhatsappIcon from "../icons/whatsapp.astro";
+import GithubIcon from "../icons/github-contact.astro";
+
+const contactos = [
+	{
+		Icon: GmailIcon,
+		info: "matisalinas1602@gmail.com"
+	},
+	{
+		Icon: WhatsappIcon,
+		info: "+542617240650",
+	},
+	{
+		Icon: GithubIcon,
+		info: "https://github.com/Matisalinas23"
+	}
+]
 ---
 
 <Layout>
-	<main class="h-full flex items-center justify-center">
+	<main class="h-full flex flex-col items-center justify-center">
 		<section class="relative max-w-200 flex flex-col justify-center gap-16">
 			<h1 class="text-5xl font-semibold">Hola, soy Matias</h1>
 			<div class="flex items-center gap-8">
@@ -23,6 +41,9 @@ import RightArrow from "../icons/next-arrow.astro";
 						<br /><br />
 						Mi perfil se enfoca en el frontend, pero tengo conocimientos
 						básicos de backend con <b class="font-medium">NodeJS</b> y <b class="font-medium">Prisma</b>.
+						<br><br>
+						Lo que mas disfruto de la programación es el orden en el codigo, que sea facilmente legible, y que los componentes
+						y pantallas esten correctamente ordenados.
 					</p>
 				</div>
 			</div>
@@ -43,6 +64,17 @@ import RightArrow from "../icons/next-arrow.astro";
 				</button>
 			</div>
 		</section>
+
+		<div class="w-200 absolute bottom-0 py-6 text-white/70 flex justify-between">
+				{contactos.map((c) => (
+					<div class="flex items-center gap-2">
+						<div class="h-8 w-8">
+							<c.Icon />
+						</div>
+						{c.info}
+					</div>
+				))}		
+			</div>
 	</main>
 </Layout>
 
