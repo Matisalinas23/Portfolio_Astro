@@ -2,46 +2,40 @@
 import Navbar from "../../components/Navbar.astro";
 import Layout from "../../layouts/Layout.astro";
 import { projects, iconMap } from "../../data/projectsData.astro";
+import ProjectImage from "../../components/ProjectImage.jsx"
 
 export async function getStaticPaths() {
-    return projects.map(project => ({
-        params: { title: project.title }, 
-        props: { project }
+    return projects.map((project) => ({
+        params: { title: project.title },
+        props: { project },
     }));
 }
 
 const { project } = Astro.props;
-const isProject = project ? true : false
+const isProject = project ? true : false;
 ---
 
 <Layout>
     <Navbar isProject={isProject} project={project} />
     <main class="py-24 p-24 flex flex-col items-center justify-center gap-24">
-        <h2 class="text-4xl h-fit font-medium">{project.title}</h2>
-        <section class="flex flex-col gap-20 xl:grid xl:grid-cols-2">
-            {project.images.map((image) => (
-                <div class="bg-indigo-900 p-8 rounded-3xl flex flex-col gap-6">
-                    <h3 class="text-2xl font-normal">{image.title}</h3>
-                    <picture>
-                        <img src={image.ref} alt={image.title} class="w-160" />
-                    </picture>
-                </div>
-            ))}
-        </section>
-
-        <section class="p-12 rounded-3xl bg-indigo-900 flex flex-col justify-center items-center gap-8">
-            <h3 class="text-2xl w-full">Herramientas Usadas</h3>
-            <div class="grid grid-cols-3 gap-12">
-                {project.tools.map(tool => {
+        <section class="flex flex-col items-center gap-18">
+            <h2 class="text-4xl h-fit font-medium">{project.title}</h2>
+            <div class="flex gap-12">
+                {project.tools.map((tool) => {
                     const Icon = iconMap[tool.name];
 
                     return (
                         <a class="h-16 w-16 cursor-pointer rounded-full duration-200 hover:scale-110" href={tool.link}>
-                           <Icon class="w-full h-full" />
+                            <Icon class="w-full h-full" />
                         </a>
                     );
                 })}
             </div>
+        </section >
+        <section class="flex flex-col gap-16 xl:grid xl:grid-cols-2">
+            {project.images.map((image) => (
+                <ProjectImage image={image} client:visible />
+            ))}
         </section>
     </main>
 </Layout>
