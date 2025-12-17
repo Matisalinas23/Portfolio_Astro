@@ -9,6 +9,10 @@ import PrismaIcon from "../icons/prisma.astro";
 import NodeIcon from "../icons/node.astro";
 import ReduxIcon from "../icons/redux.astro"
 import JavascriptIcon from "../icons/javascript.astro"
+import TypescriptIcon from "../icons/typescript.astro"
+import ZustandIcon from "../icons/zustand.astro"
+import FormikIcon from "../icons/formik.astro"
+import PostgresIcon from "../icons/postgres.astro"
 
 export const iconMap: Record<string, AstroComponentFactory> = {
   React: ReactIcon,
@@ -18,7 +22,11 @@ export const iconMap: Record<string, AstroComponentFactory> = {
   Next: NextIcon,
   Tailwind: TailwindIcon,
   Prisma: PrismaIcon,
-  Node: NodeIcon
+  Node: NodeIcon,
+  Typescript: TypescriptIcon,
+  Zustand: ZustandIcon,
+  Formik: FormikIcon,
+  Postgres: PostgresIcon
 };
 
 export interface IImage {
@@ -43,15 +51,15 @@ export interface IProject {
 export const projects: IProject[] = [
     {
         title: "Heroes App",
-        description: "Biblioteca de heroes de Marvel y DC con funciones de login y filtrado. Fue la primer aplicacion que hice con React y donde aprendi las bases de este espectacular framework",
+        description: "Biblioteca de heroes de Marvel y DC con funciones de login y filtrado.\n\nFue una de las primeras app que hice con react, y una de las primeras app que hice. Asi aprendí la componetización, estados, hooks y demas herramientas de React.",
         images: [
             {
-                title: "Iniciar Sesión",
+                title: "Galeria",
                 description: "Descripcion de prueba",
                 ref: "/images/heroesapp-1.png",
             },
             {
-                title: "Galeria",
+                title: "Iniciar Sesión",
                 description: "Descripcion de prueba",
                 ref: "/images/heroesapp-2.png",
             },
@@ -83,126 +91,140 @@ export const projects: IProject[] = [
         ]
     },
     {
-        title: "Project Two",
-        description: "Description for project two.",
+        title: "App de Tareas",
+        description: "Aplicación de tareas simple estilo jira. Sus principales funciones son de Crear, editar, borrar y ver tareas y sprints.\n\nBasada en la metodología scrum. Permite crear tareas en el backlog o en un sprint, crear sprints y mover las tareas a estos.",
         images: [
             {
-                title: "Login",
+                title: "Backlog",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-1.png",
+                ref: "/images/apptareas-1.png",
             },
             {
-                title: "Login",
+                title: "Crear/Editar Tarea",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-2.png",
+                ref: "/images/apptareas-2.png",
             },
             {
-                title: "Login",
+                title: "Ver Tarea",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-3.png",
+                ref: "/images/apptareas-3.png",
             },
             {
-                title: "Login",
+                title: "Crear Sprint",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-4.png",
+                ref: "/images/apptareas-4.png"
+            },
+            {
+                title: "Sprint",
+                description: "Descripcion de prueba",
+                ref: "/images/apptareas-5.png",
             },
         ],
-        github: "https://github.com/Matii2233/heroesApp_typscript_react",
+        github: "https://github.com/Matisalinas23/appDeTareas_react_typescript.git",
         tools: [
             {
                 name: "React",
                 link: "https://react.dev",
             },
             {
-                name: "Javascript",
-                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
+                name: "Typescript",
+                link: "https://www.typescriptlang.org/"
+            },
+            {
+                name: "Zustand",
+                link: "https://zustand-demo.pmnd.rs/"
             },
             {
                 name: "Redux",
                 link: "https://redux-toolkit.js.org/"
             },
+            {
+                name: "Formik",
+                link: "https://formik.org/"
+            }
         ]
     },
     {
-        title: "Project Three",
-        description: "Description for project three.",
+        title: "HeadP Ecomerce | Prácticas TUP",
+        description: "Como proyecto final de la tecnicatura en programación en la UTN, se nos permitio elegir algun proyecto que queramos, y yo elegi un pequeño ecomerce para una marca ficticia que quiere tener su propia tienda digital.\n\nPara este proyecto estableci que debia tener una API rest hecha con node + prisma, una base de datos PostgreSQL y un frontend con ayuda de Next implementando bcrypt para contraseñas y JWT para token de inicio de sesión.",
         images: [
             {
-                title: "Login",
+                title: "Landing Page",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-1.png",
+                ref: "/images/headp-1.png",
+            },
+            {
+                title: "Landing Page Pie de Página",
+                description: "Descripcion de prueba",
+                ref: "/images/headp-2.png",
+            },
+            {
+                title: "Producto Destacado",
+                description: "Descripcion de prueba",
+                ref: "/images/headp-10.png",
             },
             {
                 title: "Login",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-2.png",
+                ref: "/images/headp-3.png",
             },
             {
-                title: "Login",
+                title: "Tienda",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-3.png",
+                ref: "/images/headp-4.png",
             },
             {
-                title: "Login",
+                title: "Registrarse",
                 description: "Descripcion de prueba",
-                ref: "/images/heroesapp-4.png",
+                ref: "/images/headp-5.png",
+            },
+            {
+                title: "Comprar un Producto",
+                description: "Descripcion de prueba",
+                ref: "/images/headp-6.png",
+            },
+            {
+                title: "Carrito",
+                description: "Descripcion de prueba",
+                ref: "/images/headp-7.png",
+            },
+            {
+                title: "Cuenta",
+                description: "Descripcion de prueba",
+                ref: "/images/headp-8.png",
+            },
+            {
+                title: "Editar cuenta e Icono",
+                description: "Descripcion de prueba",
+                ref: "/images/headp-9.png",
             },
         ],
-        github: "https://github.com/Matii2233/heroesApp_typscript_react",
+        github: "https://github.com/Matisalinas23/FRONT_HEADP.git",
         tools: [
             {
-                name: "React",
-                link: "https://react.dev",
+                name: "Next",
+                link: "https://nextjs.org/",
             },
             {
-                name: "Javascript",
-                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
+                name: "Typescript",
+                link: "https://www.typescriptlang.org/"
             },
             {
-                name: "Redux",
-                link: "https://redux-toolkit.js.org/"
-            },
-        ]
-    },
-    {
-        title: "Project Three",
-        description: "Description for project three.",
-        images: [
-            {
-                title: "Login",
-                description: "Descripcion de prueba",
-                ref: "/images/heroesapp-1.png",
+                name: "Tailwind",
+                link: "https://tailwindcss.com/"
             },
             {
-                title: "Login",
-                description: "Descripcion de prueba",
-                ref: "/images/heroesapp-2.png",
+                name: "Node",
+                link: "https://nodejs.org/en"
             },
             {
-                title: "Login",
-                description: "Descripcion de prueba",
-                ref: "/images/heroesapp-3.png",
+                name: "Prisma",
+                link: "https://www.prisma.io/"
             },
             {
-                title: "Login",
-                description: "Descripcion de prueba",
-                ref: "/images/heroesapp-4.png",
-            },
-        ],
-        github: "https://github.com/Matii2233/heroesApp_typscript_react",
-        tools: [
-            {
-                name: "React",
-                link: "https://react.dev",
-            },
-            {
-                name: "Javascript",
-                link: "https://developer.mozilla.org/es/docs/Web/JavaScript"
-            },
-            {
-                name: "Redux",
-                link: "https://redux-toolkit.js.org/"
-            },
+                name: "Postgres",
+                link: "https://www.postgresql.org/"
+            }
         ]
     },
 ];
