@@ -27,7 +27,7 @@ export default function ProjectImage({ image }) {
     return (
         <>
         <div
-            className="bg-indigo-900 p-8 rounded-3xl cursor-pointer flex flex-col gap-6"
+            className="bg-indigo-900 w-80 sm:w-120 2xl:w-150 p-6 rounded-3xl cursor-pointer flex flex-col gap-6"
             onClick={() => {setViewImage(true); console.log(viewImage)}}
         >
             <h3 className="text-2xl font-normal">{image.title}</h3>
