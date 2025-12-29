@@ -40,14 +40,14 @@ const myTools = [
 ];
 ---
 
-<div class="flex justify-center gap-14">
-  {myTools.map((t) => {
+<div class="w-full pl-24 pr-2 pb-2 sm:pl-0 sm-pr-0 sm:pb-2 sm:pt-2 overflow-y-auto flex justify-center gap-14 items-center ">
+    {myTools.map((t) => {
         return (
             <a
             href={t.link}
-            class="flex flex-col items-center gap-2 duration-200 cursor-pointer hover:scale-110"
+            class="text-sm 2xl:text-lg flex flex-col items-center gap-2 duration-200 cursor-pointer hover:scale-110"
             >
-                <div class="w-14 h-14 flex items-center justify-center">
+                <div class="w-10 h-10 2xl:w-14 2xl:h-14 flex items-center justify-center">
                     <t.icon />
                 </div>
                 {t.name}

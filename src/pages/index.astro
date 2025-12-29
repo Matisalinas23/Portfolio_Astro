@@ -24,18 +24,18 @@ const contactos = [
 
 <Layout>
 	<main class="h-full flex flex-col items-center justify-center">
-		<section class="relative max-w-200 flex flex-col justify-center gap-16">
-			<h1 class="text-5xl font-semibold">Hola, soy Matias</h1>
-			<div class="flex items-center gap-8">
-				<picture class="w-40 h-40 md:w-50 md:h-50 flex justify-center">
+		<section class="relative w-80 sm:w-140 2xl:w-200 flex flex-col justify-center gap-8 sm:gap-12 2xl:gap-16">
+			<h1 class="text-xl font-semibold sm:text-3xl 2xl:text-5xl">Hola, soy Matias</h1>
+			<div class="flex items-center gap-4">
+				<picture class="w-30 h-30 sm:w-44 sm:h-44 2xl:h-50 2xl:w-50 flex justify-center">
 					<img
 						src="/images/perfil.png"
 						alt="Imagen Predeterminada"
 						class="h-full"
 					/>
 				</picture>
-				<div class="flex-1 flex flex-col gap-12 lg:text-lg">
-					<p class="max-h-40 pr-4 overflow-y-auto xl:max-h-50">
+				<div class="flex-1 flex flex-col gap-12">
+					<p class="text-[12px] sm:text-sm 2xl:text-lg w-full max-h-40 pr-4 overflow-y-auto xl:max-h-50">
 						Hace no mucho, comencé mi aprendizaje en desarrollo web, y
 						poco después, me di cuenta cuánto me gustaba trabajar en aplicaciones.
 						<br /><br />
@@ -51,24 +51,24 @@ const contactos = [
 			<MyToolsCarrousel />
 
 			<div class="w-full flex justify-center">
-				<button class="button-next relative overflow-hidden border w-64 h-12 text-white rounded-2xl
+				<button class="button-next relative overflow-hidden border w-52 h-9 2xl:w-64 2xl:h-12 text-white rounded-2xl
 				cursor-pointer flex items-center"
 				>
-					<a class="flex-1 z-10 text-center" href='/projects'>
+					<a class="text-sm 2xl:text-lg flex-1 z-10 text-center" href='/projects'>
 						PROYECTOS
 					</a>
 
-					<div class="right-0 w-12 border-l p-3 text-white z-10">
+					<div class="right-0 w-10 2xl:w-12 border-l p-3 text-white z-10">
 						<RightArrow />
 					</div>
 				</button>
 			</div>
 		</section>
 
-		<div class="w-200 absolute bottom-0 py-6 text-white/70 flex justify-between">
+		<div class="absolute bottom-0 py-6 sm:text-sm 2xl:text-[16px] text-white/70 flex flex-col gap-2 sm:gap-8 justify-between sm:flex-row">
 				{contactos.map((c) => (
 					<div class="flex items-center gap-2">
-						<div class="h-8 w-8">
+						<div class="h-6 w-6 sm:h-7 sm:w-7 2xl:w-8 2xl:h-8">
 							<c.Icon />
 						</div>
 						{c.info}
