@@ -145,10 +145,16 @@ import { projects } from "../data/projectsData.astro";
 
 <script>
   // Scroll horizontal usando la rueda del mouse
-  const el = document.getElementById("carousel");
+  const setupCarouselScroll = () => {
+    const el = document.getElementById("carousel");
 
-  el!.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    el!.scrollLeft += e.deltaY*9.35; // mueve horizontal con la ruedita
-  });
+    if (!el) return;
+
+    el!.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        el!.scrollLeft += e.deltaY*9.35; // mueve horizontal con la ruedita
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupCarouselScroll);
 </script>
