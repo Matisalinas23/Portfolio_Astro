@@ -1,100 +1,283 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import MyToolsCarrousel from "../components/MyToolsCarrousel.astro";
-import RightArrow from "../icons/next-arrow.astro";
-import GmailIcon from "../icons/gmail.astro";
-import WhatsappIcon from "../icons/whatsapp.astro";
 import GithubIcon from "../icons/github-contact.astro";
-
-const contactos = [
-	{
-		Icon: GmailIcon,
-		info: "matisalinas1602@gmail.com"
-	},
-	{
-		Icon: WhatsappIcon,
-		info: "+542617240650",
-	},
-	{
-		Icon: GithubIcon,
-		info: "https://github.com/Matisalinas23"
-	}
-]
+import LinkedinIcon from "../icons/linkedin.astro";
+import DownloadIcon from "../icons/download.astro";
+import { projects, iconMap } from "../data/projectsData.astro";
 ---
 
 <Layout>
-	<main class="h-full flex flex-col items-center justify-center">
-		<section class="relative w-80 sm:w-140 2xl:w-200 flex flex-col justify-center gap-8 sm:gap-12 2xl:gap-16">
-			<h1 class="text-xl font-semibold sm:text-3xl 2xl:text-5xl">Hola, soy Matias</h1>
-			<div class="flex items-center gap-4">
-				<picture class="w-30 h-30 sm:w-44 sm:h-44 2xl:h-50 2xl:w-50 flex justify-center">
+	<main class="flex flex-col items-center py-6" >
+		{/* Cntenedor guia */}
+		<div
+			class="w-140 md:w-170 lg:w-240 xl:w-260 2xl:w-300 flex flex-col items-center"
+		>
+			<section
+				id="inicio"
+				class="relative pt-28 w-full px-12 lg:px-0 flex flex-col-reverse lg:flex-row justify-between items-center gap-10"
+			>
+				<div class="w-full lg:w-3/5 flex flex-col gap-8">
+					<div class="flex flex-col items-center lg:items-start mb-8">
+						<h1
+							class="text-xl font-semibold sm:text-3xl 2xl:text-5xl"
+						>
+							MATIAS SALINAS
+						</h1>
+						<h2
+							class="text-lg text-[#FF8C00] sm:text-xl 2xl:text-2xl font-medium"
+						>
+							Desarrollador Web
+						</h2>
+					</div>
+					<p
+						class="text-[#c2c2c2] font-medium text-[12px] lg:text-[14px] text-center lg:text-justify w-full overflow-y-auto"
+					>
+						Soy desarrollador web y me gusta crear aplicaciones web
+						que facilitan una tarea, logrando que esta pueda
+						realizarse de manera mas sencilla y satisfactoria. Mi
+						perfil se enfoca en el frontend con <b
+							class="semiboldText">React</b
+						>
+						y tengo conocimientos de backend con <b
+							class="semiboldText">NodeJS</b
+						>.
+						<br /><br />
+						Lo que mas disfruto de la programación es el poder compartir
+						con otros desarrolladores y el aprender para seguir mejorando
+						y adquiriendo nuevas tecnologias.
+					</p>
+
+					{/* Buttons */}
+					<div class="flex space-between justify-between w-full lg:px-8">
+						{/* boton github */}
+						<a
+							href="https://github.com/Matisalinas23"
+							target="_blank"
+							class="buttonContact"
+						>
+							<div class="w-4 h-4">
+								<GithubIcon />
+							</div>
+							GitHub
+						</a>
+
+						{/* boton linkedin */}
+						<a
+							href="https://www.linkedin.com/in/matias-salinas-045036374/"
+							target="_blank"
+							class="buttonContact"
+						>
+							<div class="w-4 h-4">
+								<LinkedinIcon />
+							</div>
+							LinkedIn
+						</a>
+
+						{/* boton cv */}
+						<button
+							class="bg-[#FF8C00] w-40 md:w-48 text-[0.7rem] md:text-[0.75rem] lg:text-[0.8rem] text-[#00050C] cursor-pointer font-semibold flex gap-2 items-center justify-center rounded-xl
+							hover:bg-[#ffa538] hover:shadow-[0_0_10px_rgba(0,85,187,0.5)] transition-all duration-150"
+						>
+							<div class="w-5 h-5">
+								<DownloadIcon />
+							</div>
+							Descargar CV
+						</button>
+					</div>
+				</div>
+
+				{/* picture */}
+				<picture
+					class="flex justify-center items-center p-[2px] w-40 h-40 lg:rounded-2xl lg:w-48 lg:h-48 rounded-full border-2 border-[#22344D]
+					hover:border-[#8969ff] hover:shadow-[0_0_30px_rgba(0,85,187,1)] transition-all duration-200"
+				>
 					<img
 						src="/images/perfil.png"
 						alt="Imagen Predeterminada"
-						class="h-full"
+						class="w-full h-full object-cover rounded-full lg:rounded-[0.8rem]"
 					/>
 				</picture>
-				<div class="flex-1 flex flex-col gap-12">
-					<p class="text-[12px] sm:text-sm 2xl:text-lg w-full max-h-40 pr-4 overflow-y-auto xl:max-h-50">
-						Hace algunos años, comencé mi aprendizaje en desarrollo web, y me di cuenta
-						lo mucho que me gustaba trabajar en aplicaciones web, sobre todo si facilitan una tarea,
-						que de otra manera sería mas tediosa o dificil.
-						<br /><br />
-						Mi perfil se enfoca en el frontend, pero tengo conocimientos
-						básicos de backend con <b class="font-medium">NodeJS</b> y <b class="font-medium">Prisma</b>.
-						<br><br>
-						Lo que mas disfruto de la programación es el orden en el codigo, que sea facilmente legible, y que los componentes
-						y pantallas esten correctamente ordenados.
-					</p>
-				</div>
-			</div>
+			</section>
 
-			<MyToolsCarrousel />
+			<hr class="w-full border-t border-white/50 opacity-50 mt-28" />
 
-			<div class="w-full flex justify-center">
-				<button class="button-next relative overflow-hidden border w-52 h-9 2xl:w-64 2xl:h-12 text-white rounded-2xl
-				cursor-pointer flex items-center"
+			{/* Proyectos */}
+			<section id="proyectos" class="pt-28 w-full">
+				<h2
+					class="text-[#AEC6FF] text-center font-semibold text-2xl md:text-3xl mb-12"
 				>
-					<a class="text-sm 2xl:text-lg flex-1 z-10 text-center" href='/projects'>
-						PROYECTOS
-					</a>
+					Mis Proyectos
+				</h2>
 
-					<div class="right-0 w-10 2xl:w-12 border-l p-3 text-white z-10">
-						<RightArrow />
-					</div>
-				</button>
-			</div>
-		</section>
-
-		<div class="absolute bottom-0 py-6 sm:text-sm 2xl:text-[16px] text-white/70 flex flex-col gap-2 sm:gap-8 justify-between sm:flex-row">
-				{contactos.map((c) => (
-					<div class="flex items-center gap-2">
-						<div class="h-6 w-6 sm:h-7 sm:w-7 2xl:w-8 2xl:h-8">
-							<c.Icon />
-						</div>
-						{c.info}
-					</div>
-				))}		
-			</div>
+				<div class="flex flex-col gap-16">
+					{
+						projects.map((p, index) => {
+							const isEven = index % 2 === 0;
+							return (
+								<div
+									class={`project-card relative z-0 bg-black/30 px-6 py-4 md:px-10 md:py-8 rounded-xl border-2 md:border-[3px] border-transparent flex flex-col gap-4 md:gap-6 ${isEven ? "items-end text-right" : "items-start text-left"}`}
+								>
+									{/* Proyect info */}
+									<div
+										class={`flex flex-col gap-2 ${isEven ? "items-end" : "items-start"}`}
+									>
+										<h3 class="text-base text-[#AEC6FF] md:text-xl lg:text-2xl font-semibold">
+											{p.title}
+										</h3>
+										<p class="text-[10px] md:text-[12px] lg:text-[14px] w-full md:w-9/10 font-medium text-[#c2c2c2]">
+											{p.description}
+										</p>
+									</div>
+									{/* Proyect image */}
+									<picture class="w-full rounded-lg overflow-hidden border border-white/5">
+										<img
+											src={p.images[0].ref}
+											alt={p.title}
+											class="w-full h-fit"
+										/>
+									</picture>
+									{/* Proyect tools */}
+									<div
+										class={`flex flex-wrap gap-2 md:gap-4 ${isEven ? "justify-end" : "justify-start"}`}
+									>
+										{p.tools.map((t) => {
+											const Icon = iconMap[t.name];
+											return (
+												<div class="flex items-center gap-1.5 bg-white/5 px-1.5 py-0.5 md:px-2.5 md:py-1.5 rounded-md border border-white/10">
+													{Icon && (
+														<div class="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5">
+															<Icon />
+														</div>
+													)}
+													<span class="text-[9px] md:text-[11px] lg:text-[12px] font-medium text-[#c2c2c2]">
+														{t.name}
+													</span>
+												</div>
+											);
+										})}
+									</div>
+								</div>
+							);
+						})
+					}
+				</div>
+			</section>
+		</div>
 	</main>
 </Layout>
 
 <style>
-	.button-next::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		transform: translateX(-100%);
-		background: linear-gradient(
-			150deg,
-			rgb(48, 11, 136) 0%,
-			rgb(69, 20, 184) 60%
-		);
-		transition: transform .35s ease;
-		z-index: 0;
+	.semiboldText {
+		font-weight: 600;
+		color: white;
 	}
 
-	.button-next:hover::before {
-		transform: translateX(0);
+	.buttonContact {
+		height: 3rem;
+		width: 11rem;
+		border: 1px solid #22344d;
+		border-radius: 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: all 0.2s;
+		color: white;
+		text-decoration: none;
+	}
+
+	.buttonContact:hover {
+		background-color: rgba(255, 255, 255, 0.05);
+		border-color: #cfcfcf;
+		box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+	}
+
+	/* Ajustes por Breakpoints */
+	@media screen and (max-width: 1200px) {
+		.buttonContact {
+			height: 2.8rem;
+			width: 9.5rem;
+			font-size: 0.8rem;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.buttonContact {
+			height: 2.5rem;
+			width: 8rem;
+			font-size: 0.7rem;
+		}
+	}
+
+	/* Efecto Magic Border / Glow Hover para Proyectos */
+	.project-card {
+		--mouse-x: 50%;
+		--mouse-y: 50%;
+		--glow-opacity: 0;
+	}
+
+	.project-card::before,
+	.project-card::after {
+		content: "";
+		position: absolute;
+		inset: -2px; /* Compensa el border-2 */
+		border-radius: inherit;
+		padding: 2px; /* Grosor del borde */
+		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	/* Ajuste para pantallas más grandes donde el borde es de 3px */
+	@media (min-width: 768px) {
+		.project-card::before,
+		.project-card::after {
+			inset: -3px; 
+			padding: 3px;
+		}
+	}
+
+	/* Borde estático base */
+	.project-card::before {
+		background: #22344D;
+	}
+
+	/* Brillo interactivo superpuesto en el borde */
+	.project-card::after {
+		background: radial-gradient(
+			circle 300px at var(--mouse-x) var(--mouse-y),
+			#8969ff 0%,
+			transparent 100%
+		);
+		opacity: var(--glow-opacity);
+		transition: opacity 0.3s ease;
+	}
+
+	.project-card:hover {
+		--glow-opacity: 1;
 	}
 </style>
+
+<script>
+	const setupGlowCards = () => {
+		const cards = document.querySelectorAll('.project-card');
+		cards.forEach((card) => {
+			if (card instanceof HTMLElement) {
+				card.addEventListener('mousemove', (e) => {
+					const rect = card.getBoundingClientRect();
+					const x = e.clientX - rect.left;
+					const y = e.clientY - rect.top;
+					card.style.setProperty('--mouse-x', `${x}px`);
+					card.style.setProperty('--mouse-y', `${y}px`);
+				});
+			}
+		});
+	};
+
+	document.addEventListener('astro:page-load', setupGlowCards);
+	setupGlowCards();
+</script>

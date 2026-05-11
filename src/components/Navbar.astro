@@ -1,29 +1,77 @@
 ---
-import HomeIcon from "../icons/home-icon.astro";
-import GoBackIcon from "../icons/back-icon.astro";
-import GithubIcon from "../icons/github.astro"
-
 const { project, isProject } = Astro.props
 ---
 
-<nav class={`h-16 w-fit pr-14 pl-8 rounded-br-full bg-[#292080] flex items-center gap-8`}>
-    {isProject
-        ?
-        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="/">
-            <HomeIcon />
-        </a>
-        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="/projects">
-            <GoBackIcon />
-        </a>
-        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href={project.github}>
-            <GithubIcon />
-        </a>
-        :
-        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="/">
-            <HomeIcon />
-        </a>
-        <a class="h-10 w-10 rounded-full text-white cursor-pointer" href="https://github.com/Matisalinas23">
-            <GithubIcon />
-        </a>
-    }
+<nav class="sticky top-0 left-0 w-full h-18 bg-black/20 backdrop-blur-lg z-50 flex justify-center items-center gap-10 border-b border-white/5
+    hover:shadow-[0_0_12px_rgba(0,85,187,0.2)] transition-all duration-200">
+    <a href="#inicio" class="nav-link">Inicio</a>
+    <a href="#proyectos" class="nav-link">Proyectos</a>
 </nav>
+
+<style>
+    .nav-link {
+        position: relative;
+        color: #c2c2c2;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+        color: white;
+    }
+
+    /* Clase activa para Scroll Spy */
+    .nav-link.active {
+        color: #FF8C00;
+    }
+
+    .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #FF8C00;
+        border-radius: 2px;
+    }
+</style>
+
+<script>
+    const setupScrollSpy = () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px', // Ajustamos el margen para que se active al entrar en la zona superior
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    
+                    navLinks.forEach((link) => {
+                        const href = link.getAttribute("href");
+                        if (href === `#${id}`) {
+                            link.classList.add("active");
+                        } else {
+                            link.classList.remove("active");
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach((section) => observer.observe(section));
+    };
+
+    // Reiniciar observer al cargar la página o navegar (View Transitions)
+    document.addEventListener('astro:page-load', setupScrollSpy);
+    // Ejecución inicial por si no hay view transitions activas aún
+    setupScrollSpy();
+</script>

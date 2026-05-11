@@ -1,4 +1,5 @@
 ---
+import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 ---
@@ -15,7 +16,8 @@ import { ClientRouter } from 'astro:transitions';
 		<ClientRouter />
 	</head>
 	<body>
-		<main class="h-full overflow-y-auto bg-[linear-gradient(rgb(6,0,70)_0%,rgb(22,13,99)_60%,rgb(33,27,121)_100%)]">
+		<main class="mainContent relative">
+			<Navbar />
 			<slot />
 		</main>
 	</body>
@@ -34,6 +36,17 @@ import { ClientRouter } from 'astro:transitions';
 		color: white;
 	}
 
+	.mainContent {
+		height: 100%;
+		background: radial-gradient(
+			circle at 33% 50%,
+			rgb(1, 24, 51) 0%,
+			rgb(0, 19, 41) 14%,
+			rgb(0, 5, 12) 100%
+		);
+		overflow-y: auto;
+	}
+	
 	@font-face {
 		font-family: "Montserrat";
 		src: url("/fonts/Montserrat-ExtraLight.ttf") format("truetype");
