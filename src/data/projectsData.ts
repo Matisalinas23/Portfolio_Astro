@@ -1,4 +1,3 @@
----
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 import ReactIcon from "../icons/react.astro";
@@ -7,51 +6,66 @@ import NextIcon from "../icons/next.astro";
 import TailwindIcon from "../icons/tailwind.astro";
 import PrismaIcon from "../icons/prisma.astro";
 import NodeIcon from "../icons/node.astro";
-import ReduxIcon from "../icons/redux.astro"
-import JavascriptIcon from "../icons/javascript.astro"
-import TypescriptIcon from "../icons/typescript.astro"
-import ZustandIcon from "../icons/zustand.astro"
-import FormikIcon from "../icons/formik.astro"
-import PostgresIcon from "../icons/postgres.astro"
+import ReduxIcon from "../icons/redux.astro";
+import JavascriptIcon from "../icons/javascript.astro";
+import TypescriptIcon from "../icons/typescript.astro";
+import ZustandIcon from "../icons/zustand.astro";
+import FormikIcon from "../icons/formik.astro";
+import PostgresIcon from "../icons/postgres.astro";
+import HtmlIcon from "../icons/html.astro";
+import CssIcon from "../icons/css.astro";
+import GithubIcon from "../icons/github.astro";
+import SupabaseIcon from "../icons/supabase.astro";
+import NodemailerIcon from "../icons/nodemailer.astro";
+import JwtIcon from "../icons/jwt.astro";
+import FigmaIcon from "../icons/figma.astro";
 
 export const iconMap: Record<string, AstroComponentFactory> = {
-  React: ReactIcon,
-  Javascript: JavascriptIcon,
-  Redux: ReduxIcon,
-  Astro: AstroIcon,
-  Next: NextIcon,
-  Tailwind: TailwindIcon,
-  Prisma: PrismaIcon,
-  Node: NodeIcon,
-  Typescript: TypescriptIcon,
-  Zustand: ZustandIcon,
-  Formik: FormikIcon,
-  Postgres: PostgresIcon
+    React: ReactIcon,
+    Javascript: JavascriptIcon,
+    Redux: ReduxIcon,
+    Astro: AstroIcon,
+    Next: NextIcon,
+    Tailwind: TailwindIcon,
+    Prisma: PrismaIcon,
+    Node: NodeIcon,
+    Typescript: TypescriptIcon,
+    Zustand: ZustandIcon,
+    Formik: FormikIcon,
+    Postgres: PostgresIcon,
+    GitHub: GithubIcon,
+    HTML: HtmlIcon,
+    CSS: CssIcon,
+    Supabase: SupabaseIcon,
+    Nodemailer: NodemailerIcon,
+    JWT: JwtIcon,
+    Figma: FigmaIcon,
 };
 
 export interface IImage {
-    title: string
-    description: string
-    ref: string
+    title: string;
+    description: string;
+    ref: string;
 }
 
 export interface ITool {
-    name: string
-    link: string
+    name: string;
+    link: string;
 }
 
 export interface IProject {
-    title: string
-    description: string
-    github: string
-    images: IImage[]
-    tools: ITool[]
+    title: string;
+    description: string;
+    github: string;
+    images: IImage[];
+    tools: ITool[];
 }
 
 export const projects: IProject[] = [
     {
         title: "Heroes App",
-        description: "Biblioteca de heroes de Marvel y DC con funciones de login y filtrado.\n\nFue una de las primeras app que hice con react, y una de las primeras app que hice. Asi aprendí la componetización, estados, hooks y demas herramientas de React.",
+        description:
+            "Biblioteca de heroes de Marvel y DC con funciones de login y filtrado.\n\nFue una de las primeras app que hice con react, y una de las primeras app que hice. Asi aprendí la componetización, estados, hooks y demas herramientas de React.",
         images: [
             {
                 title: "Galeria",
@@ -82,17 +96,18 @@ export const projects: IProject[] = [
             },
             {
                 name: "Javascript",
-                link: "https://lenguajejs.com/javascript/"
+                link: "https://lenguajejs.com/javascript/",
             },
             {
                 name: "Redux",
-                link: "https://redux-toolkit.js.org/"
+                link: "https://redux-toolkit.js.org/",
             },
-        ]
+        ],
     },
     {
         title: "App de Tareas",
-        description: "Aplicación de tareas simple estilo jira. Sus principales funciones son de Crear, editar, borrar y ver tareas y sprints.\n\nBasada en la metodología scrum. Permite crear tareas en el backlog o en un sprint, crear sprints y mover las tareas a estos.",
+        description:
+            "Aplicación de tareas simple estilo jira. Sus principales funciones son de Crear, editar, borrar y ver tareas y sprints.\n\nBasada en la metodología scrum. Permite crear tareas en el backlog o en un sprint, crear sprints y mover las tareas a estos.",
         images: [
             {
                 title: "Backlog",
@@ -112,7 +127,7 @@ export const projects: IProject[] = [
             {
                 title: "Crear Sprint",
                 description: "Descripcion de prueba",
-                ref: "/images/apptareas-4.png"
+                ref: "/images/apptareas-4.png",
             },
             {
                 title: "Sprint",
@@ -128,25 +143,26 @@ export const projects: IProject[] = [
             },
             {
                 name: "Typescript",
-                link: "https://www.typescriptlang.org/"
+                link: "https://www.typescriptlang.org/",
             },
             {
                 name: "Zustand",
-                link: "https://zustand-demo.pmnd.rs/"
+                link: "https://zustand-demo.pmnd.rs/",
             },
             {
                 name: "Redux",
-                link: "https://redux-toolkit.js.org/"
+                link: "https://redux-toolkit.js.org/",
             },
             {
                 name: "Formik",
-                link: "https://formik.org/"
-            }
-        ]
+                link: "https://formik.org/",
+            },
+        ],
     },
     {
         title: "HeadP Ecomerce | Prácticas TUP",
-        description: "Como proyecto final de la tecnicatura en programación en la UTN, se nos permitio elegir algun proyecto que queramos, y yo elegi un pequeño ecomerce para una marca ficticia que quiere tener su propia tienda digital.\n\nPara este proyecto estableci que debia tener una API rest hecha con node + prisma, una base de datos PostgreSQL y un frontend con ayuda de Next implementando bcrypt para contraseñas y JWT para token de inicio de sesión.",
+        description:
+            "Como proyecto final de la tecnicatura en programación en la UTN, se nos permitio elegir algun proyecto que queramos, y yo elegi un pequeño ecomerce para una marca ficticia que quiere tener su propia tienda digital.\n\nPara este proyecto estableci que debia tener una API rest hecha con node + prisma, una base de datos PostgreSQL y un frontend con ayuda de Next implementando bcrypt para contraseñas y JWT para token de inicio de sesión.",
         images: [
             {
                 title: "Landing Page",
@@ -207,25 +223,24 @@ export const projects: IProject[] = [
             },
             {
                 name: "Typescript",
-                link: "https://www.typescriptlang.org/"
+                link: "https://www.typescriptlang.org/",
             },
             {
                 name: "Tailwind",
-                link: "https://tailwindcss.com/"
+                link: "https://tailwindcss.com/",
             },
             {
                 name: "Node",
-                link: "https://nodejs.org/en"
+                link: "https://nodejs.org/en",
             },
             {
                 name: "Prisma",
-                link: "https://www.prisma.io/"
+                link: "https://www.prisma.io/",
             },
             {
                 name: "Postgres",
-                link: "https://www.postgresql.org/"
-            }
-        ]
+                link: "https://www.postgresql.org/",
+            },
+        ],
     },
 ];
----

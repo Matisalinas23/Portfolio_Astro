@@ -3,11 +3,17 @@ import Layout from "../layouts/Layout.astro";
 import GithubIcon from "../icons/github-contact.astro";
 import LinkedinIcon from "../icons/linkedin.astro";
 import DownloadIcon from "../icons/download.astro";
-import { projects, iconMap } from "../data/projectsData.astro";
+import { projects, iconMap } from "../data/projectsData";
+import {
+	frontTechnologies,
+	backTechnologies,
+	tools,
+} from "../data/stackData";
+import UtnIcon from "../icons/utn.astro";
 ---
 
 <Layout>
-	<main class="flex flex-col items-center py-6" >
+	<main class="flex flex-col items-center pt-6 pb-16">
 		{/* Cntenedor guia */}
 		<div
 			class="w-140 md:w-170 lg:w-240 xl:w-260 2xl:w-300 flex flex-col items-center"
@@ -48,7 +54,9 @@ import { projects, iconMap } from "../data/projectsData.astro";
 					</p>
 
 					{/* Buttons */}
-					<div class="flex space-between justify-between w-full lg:px-8">
+					<div
+						class="flex space-between justify-between w-full lg:px-8"
+					>
 						{/* boton github */}
 						<a
 							href="https://github.com/Matisalinas23"
@@ -102,7 +110,7 @@ import { projects, iconMap } from "../data/projectsData.astro";
 			<hr class="w-full border-t border-white/50 opacity-50 mt-28" />
 
 			{/* Proyectos */}
-			<section id="proyectos" class="pt-28 w-full">
+			<section id="proyectos" class="pt-40 w-full">
 				<h2
 					class="text-[#AEC6FF] text-center font-semibold text-2xl md:text-3xl mb-12"
 				>
@@ -115,7 +123,8 @@ import { projects, iconMap } from "../data/projectsData.astro";
 							const isEven = index % 2 === 0;
 							return (
 								<div
-									class={`project-card relative z-0 bg-black/30 px-6 py-4 md:px-10 md:py-8 rounded-xl border-2 md:border-[3px] border-transparent flex flex-col gap-4 md:gap-6 ${isEven ? "items-end text-right" : "items-start text-left"}`}
+									class={`project-card relative z-0 bg-black/30 px-6 py-4 md:px-10 md:py-8 rounded-xl border-2 md:border-[3px] border-transparent
+										flex flex-col gap-4 md:gap-6 ${isEven ? "items-end text-right" : "items-start text-left"}`}
 								>
 									{/* Proyect info */}
 									<div
@@ -128,14 +137,6 @@ import { projects, iconMap } from "../data/projectsData.astro";
 											{p.description}
 										</p>
 									</div>
-									{/* Proyect image */}
-									<picture class="w-full rounded-lg overflow-hidden border border-white/5">
-										<img
-											src={p.images[0].ref}
-											alt={p.title}
-											class="w-full h-fit"
-										/>
-									</picture>
 									{/* Proyect tools */}
 									<div
 										class={`flex flex-wrap gap-2 md:gap-4 ${isEven ? "justify-end" : "justify-start"}`}
@@ -156,10 +157,175 @@ import { projects, iconMap } from "../data/projectsData.astro";
 											);
 										})}
 									</div>
+									{/* Proyect image */}
+									<picture class="w-full rounded-lg overflow-hidden border border-white/5">
+										<img
+											src={p.images[0].ref}
+											alt={p.title}
+											class="w-full h-fit"
+										/>
+									</picture>
 								</div>
 							);
 						})
 					}
+				</div>
+			</section>
+
+			<section id="stack" class="w-full pt-40">
+				<h2
+					class="text-[#AEC6FF] text-center font-semibold text-2xl md:text-3xl mb-12"
+				>
+					Stack Tecnológico
+				</h2>
+				<div class="flex flex-col gap-14">
+					{/* Frontend */}
+					<div class="flex flex-col gap-6">
+						<h3
+							class="text-xl font-medium text-white/80 border-l-4 border-[#FF8C00] pl-4"
+						>
+							Frontend
+						</h3>
+						<div
+							class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4"
+						>
+							{
+								frontTechnologies.map((t) => {
+									const Icon = iconMap[t.name];
+									return (
+										<a
+											href={t.link}
+											target="_blank"
+											class="flex flex-col items-center gap-3 group transition-all duration-300"
+										>
+											<div class="w-13 h-13 md:w-15 md:h-15 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#AEC6FF]/50 group-hover:bg-[#AEC6FF]/10 transition-all duration-300 shadow-lg group-hover:shadow-[#AEC6FF]/20">
+												{Icon ? (
+													<div class="w-8 h-8 md:w-9 md:h-9 text-white/70 group-hover:text-[#AEC6FF] transition-colors">
+														<Icon />
+													</div>
+												) : (
+													<span class="text-xs">
+														{t.name[0]}
+													</span>
+												)}
+											</div>
+											<span class="text-[10px] md:text-xs font-medium text-[#c2c2c2] group-hover:text-white transition-colors">
+												{t.name}
+											</span>
+										</a>
+									);
+								})
+							}
+						</div>
+					</div>
+
+					{/* Backend */}
+					<div class="flex flex-col gap-6">
+						<h3
+							class="text-xl font-medium text-white/80 border-l-4 border-[#FF8C00] pl-4"
+						>
+							Backend
+						</h3>
+						<div
+							class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4"
+						>
+							{
+								backTechnologies.map((t) => {
+									const Icon = iconMap[t.name];
+									return (
+										<a
+											href={t.link}
+											target="_blank"
+											class="flex flex-col items-center gap-4 group transition-all duration-300"
+										>
+											<div class="w-13 h-13 md:w-15 md:h-15 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#AEC6FF]/50 group-hover:bg-[#AEC6FF]/10 transition-all duration-300 shadow-lg group-hover:shadow-[#AEC6FF]/20">
+												{Icon ? (
+													<div class="w-8 h-8 md:w-9 md:h-9 text-white/70 group-hover:text-[#AEC6FF] transition-colors">
+														<Icon />
+													</div>
+												) : (
+													<span class="text-xs">
+														{t.name[0]}
+													</span>
+												)}
+											</div>
+											<span class="text-[10px] md:text-xs font-medium text-[#c2c2c2] group-hover:text-white transition-colors">
+												{t.name}
+											</span>
+										</a>
+									);
+								})
+							}
+						</div>
+					</div>
+
+					{/* Herramientas */}
+					<div class="flex flex-col gap-6">
+						<h3
+							class="text-xl font-medium text-white/80 border-l-4 border-[#FF8C00] pl-4"
+						>
+							Herramientas
+						</h3>
+						<div
+							class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4"
+						>
+							{
+								tools.map((t) => {
+									const Icon = iconMap[t.name];
+									return (
+										<a
+											href={t.link}
+											target="_blank"
+											class="flex flex-col items-center gap-4 group transition-all duration-300"
+										>
+											<div class="w-13 h-13 md:w-15 md:h-15 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#AEC6FF]/50 group-hover:bg-[#AEC6FF]/10 transition-all duration-300 shadow-lg group-hover:shadow-[#AEC6FF]/20">
+												{Icon ? (
+													<div class="w-8 h-8 md:w-9 md:h-9 text-white/70 group-hover:text-[#AEC6FF] transition-colors">
+														<Icon />
+													</div>
+												) : (
+													<span class="text-xs">
+														{t.name[0]}
+													</span>
+												)}
+											</div>
+											<span class="text-[10px] md:text-xs font-medium text-[#c2c2c2] group-hover:text-white transition-colors">
+												{t.name}
+											</span>
+										</a>
+									);
+								})
+							}
+						</div>
+					</div>
+				</div>
+			<section id="formacion" class="w-full pt-30 pb-20">
+				<h2
+					class="text-[#AEC6FF] text-center font-semibold text-2xl md:text-3xl mb-12"
+				>
+					Formación
+				</h2>
+				<div class="flex flex-col items-center">
+					<div
+						class="bg-black/30 px-8 py-6 rounded-xl border-2 border-white/10 w-full max-w-2xl flex flex-col gap-2
+						hover:border-[#AEC6FF]/66 hover:shadow-[0_0_12px_#AEC6FF]/20 transition-colors group"
+					>
+						<div class="flex items-center gap-3">
+							<h3
+								class="text-md md:text-lg font-semibold text-white group-hover:text-[#AEC6FF] transition-colors"
+							>
+								Universidad Tecnológica Nacional (UTN FRM)
+							</h3>
+							<div class="w-5.5 h-5.5 bg-white/80 p-0.5 group-hover:bg-white transition-all duration-250"> <UtnIcon /> </div>
+						</div>
+						<div
+							class="text-[#c2c2c2] font-medium px-2 text-sm md:text-base flex items-center gap-2"
+						>
+
+							<div class="h-[10px] w-[10px] border-[#FF8C00] bg-[#FF8C00]/66 group-hover:bg-[#FF8C00] group-hover:shadow-[0_0_12px_#FF8C00]/66 transition-all duration-250"></div>
+							<p class="text-[15px]">Tecnicatura Universitaria en Programación (2023 - 2025)</p>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -225,7 +391,9 @@ import { projects, iconMap } from "../data/projectsData.astro";
 		inset: -2px; /* Compensa el border-2 */
 		border-radius: inherit;
 		padding: 2px; /* Grosor del borde */
-		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
 		-webkit-mask-composite: xor;
 		mask-composite: exclude;
 		z-index: -1;
@@ -236,14 +404,14 @@ import { projects, iconMap } from "../data/projectsData.astro";
 	@media (min-width: 768px) {
 		.project-card::before,
 		.project-card::after {
-			inset: -3px; 
+			inset: -3px;
 			padding: 3px;
 		}
 	}
 
 	/* Borde estático base */
 	.project-card::before {
-		background: #22344D;
+		background: #22344d;
 	}
 
 	/* Brillo interactivo superpuesto en el borde */
@@ -264,20 +432,20 @@ import { projects, iconMap } from "../data/projectsData.astro";
 
 <script>
 	const setupGlowCards = () => {
-		const cards = document.querySelectorAll('.project-card');
+		const cards = document.querySelectorAll(".project-card, .formation-card");
 		cards.forEach((card) => {
 			if (card instanceof HTMLElement) {
-				card.addEventListener('mousemove', (e) => {
+				card.addEventListener("mousemove", (e) => {
 					const rect = card.getBoundingClientRect();
 					const x = e.clientX - rect.left;
 					const y = e.clientY - rect.top;
-					card.style.setProperty('--mouse-x', `${x}px`);
-					card.style.setProperty('--mouse-y', `${y}px`);
+					card.style.setProperty("--mouse-x", `${x}px`);
+					card.style.setProperty("--mouse-y", `${y}px`);
 				});
 			}
 		});
 	};
 
-	document.addEventListener('astro:page-load', setupGlowCards);
+	document.addEventListener("astro:page-load", setupGlowCards);
 	setupGlowCards();
 </script>

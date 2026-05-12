@@ -6,6 +6,7 @@ const { project, isProject } = Astro.props
     hover:shadow-[0_0_12px_rgba(0,85,187,0.2)] transition-all duration-200">
     <a href="#inicio" class="nav-link">Inicio</a>
     <a href="#proyectos" class="nav-link">Proyectos</a>
+    <a href="#stack" class="nav-link">Stack y Formación</a>
 </nav>
 
 <style>
@@ -38,40 +39,55 @@ const { project, isProject } = Astro.props
         border-radius: 2px;
     }
 </style>
-
 <script>
     const setupScrollSpy = () => {
         const sections = document.querySelectorAll("section[id]");
         const navLinks = document.querySelectorAll(".nav-link");
+        const scrollContainer = document.querySelector(".mainContent");
+
+        if (!scrollContainer) return;
 
         const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -70% 0px', // Ajustamos el margen para que se active al entrar en la zona superior
+            root: scrollContainer,
+            rootMargin: '-20% 0px -75% 0px',
             threshold: 0,
+        };
+
+        const setActiveLink = (id: string) => {
+            // Unificamos stack y formacion
+            const targetId = (id === 'stack' || id === 'formacion') ? 'stack' : id;
+
+            navLinks.forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href === `#${targetId}`) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute("id");
-                    
-                    navLinks.forEach((link) => {
-                        const href = link.getAttribute("href");
-                        if (href === `#${id}`) {
-                            link.classList.add("active");
-                        } else {
-                            link.classList.remove("active");
-                        }
-                    });
+                    if (id) setActiveLink(id);
                 }
             });
         }, observerOptions);
 
         sections.forEach((section) => observer.observe(section));
+
+        // Especial para el final de la página (Formación)
+        scrollContainer.addEventListener("scroll", () => {
+            const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+            if (scrollTop + clientHeight >= scrollHeight - 5) {
+                const lastSectionId = sections[sections.length - 1]?.getAttribute("id");
+                if (lastSectionId) setActiveLink(lastSectionId);
+            }
+        });
     };
 
-    // Reiniciar observer al cargar la página o navegar (View Transitions)
     document.addEventListener('astro:page-load', setupScrollSpy);
-    // Ejecución inicial por si no hay view transitions activas aún
     setupScrollSpy();
 </script>
