@@ -1,0 +1,32 @@
+---
+import { iconMap } from "../data/projectsData";
+import type { ITool } from "../data/projectsData";
+
+interface Props {
+	tech: ITool;
+}
+
+const { tech } = Astro.props;
+const Icon = iconMap[tech.name];
+---
+
+<a
+	href={tech.link}
+	target="_blank"
+	class="flex flex-col items-center gap-3 group transition-all duration-300"
+>
+	<div class="w-13 h-13 md:w-15 md:h-15 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#AEC6FF]/50 group-hover:bg-[#AEC6FF]/10 transition-all duration-300 shadow-lg group-hover:shadow-[#AEC6FF]/20">
+		{Icon ? (
+			<div class="w-8 h-8 md:w-9 md:h-9 text-white/70 group-hover:text-[#AEC6FF] transition-colors">
+				<Icon />
+			</div>
+		) : (
+			<span class="text-xs">
+				{tech.name[0]}
+			</span>
+		)}
+	</div>
+	<span class="text-[10px] md:text-xs font-medium text-[#c2c2c2] group-hover:text-white transition-colors">
+		{tech.name}
+	</span>
+</a>
