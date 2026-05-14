@@ -17,12 +17,10 @@ import TechBadge from "../components/TechBadge.astro";
 <Layout>
 	<main class="flex flex-col items-center pt-6 pb-16">
 		{/* Cntenedor guia */}
-		<div
-			class="w-140 md:w-170 lg:w-240 xl:w-260 2xl:w-300 flex flex-col items-center"
-		>
+		<div class="w-11/12 md:w-4/5 max-w-7xl flex flex-col items-center">
 			<section
 				id="inicio"
-				class="relative pt-28 w-full px-12 lg:px-0 flex flex-col-reverse lg:flex-row justify-between items-center gap-10"
+				class="relative pt-28 w-full px-0 flex flex-col-reverse lg:flex-row justify-between items-center gap-10"
 			>
 				<div class="w-full lg:w-3/5 flex flex-col gap-8">
 					<div class="flex flex-col items-center lg:items-start mb-8">
@@ -50,7 +48,7 @@ import TechBadge from "../components/TechBadge.astro";
 					</p>
 
 					{/* Buttons */}
-					<div class="flex space-between justify-between w-full lg:px-8" >
+					<div class="flex flex-wrap justify-center sm:justify-start gap-4 w-full lg:px-8" >
 						{/* boton github */}
 						<a
 							href="https://github.com/Matisalinas23"
@@ -90,7 +88,7 @@ import TechBadge from "../components/TechBadge.astro";
 
 				{/* picture */}
 				<picture
-					class="flex justify-center items-center p-[2px] w-40 h-40 lg:rounded-2xl lg:w-48 lg:h-48 rounded-full border-2 border-[#22344D]
+					class="flex justify-center items-center p-[2px] w-36 h-36 sm:w-40 sm:h-40 lg:rounded-2xl lg:w-48 lg:h-48 rounded-full border-2 border-[#22344D]
 					hover:border-[#8969ff] hover:shadow-[0_0_30px_rgba(0,85,187,1)] transition-all duration-200"
 				>
 					<img
@@ -247,8 +245,15 @@ import TechBadge from "../components/TechBadge.astro";
 	@media screen and (max-width: 768px) {
 		.buttonContact {
 			height: 2.5rem;
-			width: 8rem;
+			width: 8.5rem;
 			font-size: 0.7rem;
+		}
+	}
+	
+	@media screen and (max-width: 480px) {
+		.buttonContact {
+			width: 100%;
+			max-width: 16rem;
 		}
 	}
 
