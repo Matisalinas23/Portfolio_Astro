@@ -5,6 +5,7 @@ import LinkedinIcon from "../icons/linkedin.astro";
 import DownloadIcon from "../icons/download.astro";
 import { projects, iconMap } from "../data/projectsData";
 import {
+	aiTechnologies,
 	frontTechnologies,
 	backTechnologies,
 	tools,
@@ -126,6 +127,18 @@ import TechBadge from "../components/TechBadge.astro";
 					Stack Tecnológico
 				</h2>
 				<div class="flex flex-col gap-14">
+					{/* AI */}
+					<div class="flex flex-col gap-6">
+						<h3 class="text-xl font-medium text-white/80 border-l-4 border-[#FF8C00] pl-4"> AI </h3>
+						<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
+							{
+								aiTechnologies.map((t) => (
+									<TechBadge tech={t} />
+								))
+							}
+						</div>
+					</div>
+
 					{/* Frontend */}
 					<div class="flex flex-col gap-6">
 						<h3 class="text-xl font-medium text-white/80 border-l-4 border-[#FF8C00] pl-4">
