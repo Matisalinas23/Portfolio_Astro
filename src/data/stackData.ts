@@ -1,3 +1,22 @@
+const aiTechnologies = [
+    {
+        name: "Antigravity",
+        link: "https://antigravity.google/"
+    },
+    {
+        name: "Gemini",
+        link: "https://gemini.google.com/"
+    },
+    {
+        name: "Claude",
+        link: "https://claude.com/"
+    },
+    {
+        name: "Stich",
+        link: "https://stitch.withgoogle.com/"
+    }
+]
+
 const frontTechnologies = [
     {
         name: "React",
@@ -75,4 +94,4 @@ const tools = [
     },
 ];
 
-export { frontTechnologies, backTechnologies, tools };
+export { aiTechnologies, frontTechnologies, backTechnologies, tools };

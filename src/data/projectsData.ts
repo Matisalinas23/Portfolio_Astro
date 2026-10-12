@@ -19,6 +19,10 @@ import SupabaseIcon from "../icons/supabase.astro";
 import NodemailerIcon from "../icons/nodemailer.astro";
 import JwtIcon from "../icons/jwt.astro";
 import FigmaIcon from "../icons/figma.astro";
+import AntigravityIcon from "../icons/antigravity.astro";
+import GeminiIcon from "../icons/gemini.astro";
+import ClaudeIcon from "../icons/claude.astro";
+import StichIcon from "../icons/stich.astro";
 
 export const iconMap: Record<string, AstroComponentFactory> = {
     React: ReactIcon,
@@ -40,6 +44,10 @@ export const iconMap: Record<string, AstroComponentFactory> = {
     Nodemailer: NodemailerIcon,
     JWT: JwtIcon,
     Figma: FigmaIcon,
+    Antigravity: AntigravityIcon,
+    Gemini: GeminiIcon,
+    Claude: ClaudeIcon,
+    Stich: StichIcon,
 };
 
 export interface IImage {
