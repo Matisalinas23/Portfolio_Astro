@@ -1,5 +1,5 @@
 ---
-import { iconMap } from "../data/projectsData";
+import { iconMap, projects } from "../data/projectsData";
 import type { IProject } from "../data/projectsData";
 import IconGithub from "../icons/github.astro";
 
@@ -9,7 +9,9 @@ interface Props {
 }
 
 const { project, isEven } = Astro.props;
+const carouselId = `carousel-${Math.random().toString(36).slice(2, 8)}`;
 ---
+
 
 <div
 	class={`project-card relative z-0 bg-black/30 px-6 py-4 md:px-10 md:py-8 rounded-xl border-2 md:border-[3px] border-transparent
@@ -51,13 +53,22 @@ const { project, isEven } = Astro.props;
 		}
 	</div>
 	{/* Proyect image */}
-	<picture class="w-full rounded-lg overflow-hidden border border-white/5">
-		<img
-			src={project.images[0].ref}
-			alt={project.title}
-			class="w-full h-fit"
-		/>
-	</picture>
+	<div class="carousel-wrapper">
+		<button class="carousel-btn carousel-btn--prev" data-carousel={carouselId} aria-label="Imagen anterior" disabled>
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+		</button>
+		<picture
+			class="h-144 w-full rounded-lg overflow-x-hidden overflow-y-hidden border border-white/5 flex"
+			id={carouselId}
+		>
+			{project.images.map((i) =>
+				<img src={i.ref} alt={i.title} class="w-full h-fit shrink-0" />
+			)}
+		</picture>
+		<button class="carousel-btn carousel-btn--next" data-carousel={carouselId} aria-label="Siguiente imagen">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+		</button>
+	</div>
 
 	{/* Github button */}
 	<div class={`flex w-full ${isEven ? "justify-end" : "justify-start"}`}>
@@ -105,4 +116,72 @@ const { project, isEven } = Astro.props;
 			font-size: 0.7rem;
 		}
 	}
+
+	/* Carousel */
+	.carousel-wrapper {
+		position: relative;
+		width: 100%;
+	}
+
+	.carousel-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+		background-color: rgba(0, 0, 0, 0.5);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 50%;
+		width: 2.2rem;
+		height: 2.2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		cursor: pointer;
+		transition: background-color 0.2s, opacity 0.2s;
+		backdrop-filter: blur(4px);
+	}
+
+	.carousel-btn--prev { left: 0.5rem; }
+	.carousel-btn--next { right: 0.5rem; }
+
+	.carousel-btn:hover:not(:disabled) {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+
+	.carousel-btn:disabled {
+		opacity: 0.2;
+		cursor: default;
+	}
 </style>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>('.carousel-btn').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const id = btn.dataset.carousel!;
+			const track = document.getElementById(id) as HTMLElement;
+			const scrollAmount = track.clientWidth;
+			const direction = btn.classList.contains('carousel-btn--prev') ? -1 : 1;
+			track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+		});
+	});
+
+	document.querySelectorAll<HTMLElement>('picture[id^="carousel-"]').forEach((track) => {
+		const wrapper = track.closest('.carousel-wrapper')!;
+		const prevBtn = wrapper.querySelector<HTMLButtonElement>('.carousel-btn--prev')!;
+		const nextBtn = wrapper.querySelector<HTMLButtonElement>('.carousel-btn--next')!;
+
+		const update = () => {
+			const atStart = track.scrollLeft <= 1;
+			const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+			prevBtn.disabled = atStart;
+			nextBtn.disabled = atEnd;
+		};
+
+		// Hide next arrow if only one image
+		if (track.scrollWidth <= track.clientWidth + 1) nextBtn.disabled = true;
+
+		track.addEventListener('scroll', update, { passive: true });
+		update();
+	});
+</script>
